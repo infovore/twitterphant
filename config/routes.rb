@@ -1,6 +1,10 @@
 Twitterphant::Application.routes.draw do
   resources :searchterms do
     resources :tweets
+    member do
+      get 'delete'
+      get 'refresh'
+    end
   end
   # The priority is based upon order of creation:
   # first created -> highest priority.

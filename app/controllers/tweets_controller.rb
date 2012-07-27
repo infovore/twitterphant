@@ -9,6 +9,6 @@ class TweetsController < ApplicationController
   private
   
   def scope_to_searchterm
-    @searchterm = Searchterm.find(params[:searchterm_id]).first
+    @searchterm = Searchterm.find(params[:searchterm_id])
   end
 end
