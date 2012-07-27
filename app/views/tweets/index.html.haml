@@ -1,0 +1,21 @@
+- content_for :title do
+  Tweets matching '#{@searchterm.text}'
+
+%table.table
+  %thead
+    %tr
+      %th From
+      %th At
+      %th Saying
+      %th{:colspan => 2}
+  %tbody
+    - for tweet in @tweets
+      %tr
+        %td= link_to tweet.from_user_name, "http://twitter.com/#{tweet.from_user_id}"
+        %td= tweet.tweeted_at
+        %td= tweet.text
+        %td= link_to "View tweet", tweet.url
+
+= paginate(@tweets)
+
+%p= link_to "Refresh", refresh_searchterm_path(@searchterm), :class => "btn"

@@ -1,0 +1,26 @@
+!!! 5
+%html
+  %head
+    %title Twitterphant
+    = stylesheet_link_tag    "bootstrap.min", :media => "all"
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container
+          = link_to "Twitterphant", "/", :class => "brand"
+          %ul.nav
+            %li= link_to "Search Terms", searchterms_path
+
+    .container.main
+      .page-header
+        %h1= yield :title
+
+      - if flash[:success]
+        .alert.alert-success= flash[:success]
+      - if flash[:warning]
+        .alert.alert-warning= flash[:warning]
+      = yield
+
