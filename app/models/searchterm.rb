@@ -1,5 +1,5 @@
 class Searchterm < ActiveRecord::Base
-  has_many :tweets
+  has_many :tweets, :dependent => :destroy
 
   def refresh!
     Twitter.search(self.text, :rpp => 100, :result_type => "recent").results.each do |status|

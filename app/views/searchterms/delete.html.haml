@@ -1,0 +1,10 @@
+- content_for :title do
+  Delete Search Term "#{@searchterm.text}"?
+
+%p Are you sure you want to delete this searchterm?
+
+%p
+  = button_to "Delete", searchterm_path(@searchterm), :method => :delete, :class => "btn"
+  or
+  = link_to "Return to all search terms", searchterms_path
+

@@ -1,0 +1,10 @@
+- content_for :title do
+  Create Search Term
+
+
+= form_for @searchterm, :url => {:action => :create} do |f|
+  .field
+    = f.label :text, "Searchterm"
+    = f.text_field :text 
+
+  %p= f.submit :class => "btn"
