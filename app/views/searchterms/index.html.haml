@@ -12,5 +12,6 @@
         %td= term.text
         %td= link_to "View tweets", searchterm_tweets_path(term)
         %td= link_to "Delete term", delete_searchterm_path(term)
+        %td= link_to "Export all tweets as CSV", export_searchterm_path(term)
 
 %p= link_to "Create new", new_searchterm_path, :class => "btn"

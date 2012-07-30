@@ -1,3 +1,5 @@
+require 'csv'
+
 class SearchtermsController < ApplicationController
   before_filter :scope_to_searchterm, :except => %w{index new create}
 
@@ -27,6 +29,19 @@ class SearchtermsController < ApplicationController
   def refresh
     @searchterm.refresh!
     redirect_to searchterm_tweets_path(@searchterm)
+  end
+
+  def export
+    tweets = @searchterm.tweets.order("created_at ASC")
+    #
+    csv_string = CSV.generate do |csv|
+      csv << ["Tweeted at", "User", "Tweet URL", "Content"] 
+      tweets.each do |tweet|
+        csv << [tweet.tweeted_at, tweet.from_user_name, tweet.url, tweet.text]
+      end
+    end
+    send_data(csv_string, :type => 'text/csv; charset=utf-8; header=present', :filename => "#{@searchterm.slugify}.csv")  
+    
   end
 
   private
