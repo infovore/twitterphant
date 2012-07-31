@@ -33,7 +33,7 @@ class SearchtermsController < ApplicationController
   end
 
   def export
-    tweets = @searchterm.tweets.order("created_at ASC")
+    tweets = @searchterm.tweets.order("tweeted_at ASC")
     #
     csv_string = CSV.generate do |csv|
       csv << ["Unique ID", "Tweeted at", "User", "Tweet URL", "Content"] 
