@@ -2,7 +2,7 @@ class Searchterm < ActiveRecord::Base
   has_many :tweets, :dependent => :destroy
 
   def refresh!
-    grab_tweets
+    grab_tweets(1000)
   end
 
   def initial_import!
