@@ -36,9 +36,9 @@ class SearchtermsController < ApplicationController
     tweets = @searchterm.tweets.order("created_at ASC")
     #
     csv_string = CSV.generate do |csv|
-      csv << ["Tweeted at", "User", "Tweet URL", "Content"] 
+      csv << ["Unique ID", "Tweeted at", "User", "Tweet URL", "Content"] 
       tweets.each do |tweet|
-        csv << [tweet.tweeted_at, tweet.from_user_name, tweet.url, tweet.text]
+        csv << [tweet.tweet_id_string, tweet.tweeted_at, tweet.from_user_name, tweet.url, tweet.text]
       end
     end
     send_data(csv_string, :type => 'text/csv; charset=utf-8; header=present', :filename => "#{@searchterm.slugify}.csv")  
