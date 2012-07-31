@@ -7,6 +7,7 @@ Twitterphant::Application.routes.draw do
       get 'export'
     end
   end
+  root :to => "searchterms#index"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
