@@ -14,6 +14,7 @@ class SearchtermsController < ApplicationController
   def create
     @searchterm = Searchterm.create(params[:searchterm])
     if @searchterm.save
+      @searchterm.initial_import!
       redirect_to searchterms_path
     else
       render :new
