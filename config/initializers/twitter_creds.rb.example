@@ -1,0 +1,6 @@
+Rails.configuration.twitter_consumer_key = "your"
+Rails.configuration.twitter_consumer_secret = "configuration"
+Rails.configuration.twitter_oauth_token = "goes"
+Rails.configuration.twitter_oauth_token_secret = "here"
+
+
