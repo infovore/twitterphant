@@ -5,11 +5,10 @@ class Tweet < ActiveRecord::Base
     unless(self.where(:tweet_id_string => status.id.to_s).any?)
       t = self.new
       t.searchterm_id = searchterm.id
-      t.from_user = status.from_user
-      t.from_user_id = status.from_user_id
-      t.from_user_name = status.from_user_name
+      t.from_user_id = status.user.screen_name
+      t.from_user_name = status.user.name
       t.tweeted_at = status.created_at
-      t.image_url = status.profile_image_url
+      t.image_url = status.user.profile_image_url
       t.tweet_id_string = status.id.to_s
       t.text = status.text
       t.save
